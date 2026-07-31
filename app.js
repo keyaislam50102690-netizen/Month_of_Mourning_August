@@ -55,9 +55,9 @@
   // ─── Load frame overlay ───────────────────────────────────────────────────────
   const frameImg = new Image();
   frameImg.crossOrigin = 'anonymous';
-  frameImg.src = 'frame.png';
+  frameImg.src = 'frame1.png';
   frameImg.onload  = () => { state.frame = frameImg; render(); };
-  frameImg.onerror = () => toast('Could not load frame.png');
+  frameImg.onerror = () => toast('Could not load frame1.png');
 
   // ─── Render ───────────────────────────────────────────────────────────────────
   function render() {
