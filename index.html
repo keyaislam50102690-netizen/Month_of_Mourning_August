@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#07432e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="শোকাবহ আগস্ট!">
+  <link rel="icon" href="frame.png" type="image/png">
+  <title>শোকাবহ আগস্ট! — Photo Frame</title>
+  <meta name="description" content="Generate your profile picture. Upload, position, download.">
+  <link rel="preload" href="frame.png" as="image">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <h1><span class="bn">শোকাবহ আগস্ট</span><span class="en">August, Month of Mourning</span></h1>
+    <p class="tagline">Upload · Position · Download</p>
+  </header>
+
+  <main class="editor">
+
+    <section class="canvas-stage">
+      <div class="canvas-wrap">
+        <canvas id="canvas" width="1200" height="1200" aria-label="Photo frame preview"></canvas>
+        <div class="empty-hint" id="emptyHint">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="9" cy="9" r="2" />
+            <path d="m21 15-5-5L5 21" />
+          </svg>
+          <p><span class="bn">ছবি বেছে নিন</span><span>Tap to pick a photo</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Photo controls">
+
+      <div class="control-row file-row">
+        <label class="btn btn-primary" for="fileInput">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <span>Choose Photo</span>
+        </label>
+        <input type="file" id="fileInput" accept="image/*" autocomplete="off" hidden>
+        <button class="btn btn-ghost" id="resetBtn" disabled aria-label="Reset position">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+          </svg>
+          <span>Reset</span>
+        </button>
+      </div>
+
+      <div class="control-row slider-row">
+        <label for="zoom">
+          <span class="label-text">Zoom</span>
+          <span class="label-value" id="zoomValue">100%</span>
+        </label>
+        <div class="zoom-pill">
+          <button id="zoomOutBtn" class="pill-btn left-pill" disabled aria-label="Zoom Out">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+          <div class="pill-divider"></div>
+          <button id="zoomInBtn" class="pill-btn right-pill" disabled aria-label="Zoom In">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="color-mode-toggle" id="colorModeToggle">
+        <button class="mode-btn active" id="colorBtn">Color</button>
+        <button class="mode-btn" id="bwBtn">Black & White</button>
+      </div>
+
+      <button class="btn btn-download" id="downloadBtn" disabled>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        <span>Download PNG</span>
+      </button>
+      <div class="download-counter" id="downloadCounter">
+        Downloads: <span id="downloadCount">0</span>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Bangladesh Students' League
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
